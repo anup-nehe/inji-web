@@ -34,8 +34,9 @@ jobs:
       ACTOR_DOCKER_HUB: ${{ secrets.ACTOR_DOCKER_HUB }}
       RELEASE_DOCKER_HUB: ${{ secrets.RELEASE_DOCKER_HUB }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+
   sonar-analysis-inji-web:
-    if: "${{  github.event_name != 'pull_request' }}"
+    if: "${{ github.event_name != 'pull_request' }}"
     needs: build-dockers-inji-web
     uses: mosip/kattu/.github/workflows/npm-sonar-analysis.yml@master-java21
     with:
@@ -46,8 +47,8 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       ORG_KEY: ${{ secrets.ORG_KEY }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      
-        build-maven-uitest-inji-web-test:
+
+  build-maven-uitest-inji-web-test:
     uses: mosip/kattu/.github/workflows/maven-build.yml@master-java21
     with:
       SERVICE_LOCATION: ./inji-web-test
@@ -58,9 +59,9 @@ jobs:
       OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
       GPG_SECRET: ${{ secrets.GPG_SECRET }}
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      
-        build-dockers-uitest-pmprevamp:
-    needs: build-inji-web-test-local
+
+  build-dockers-uitest-pmprevamp:
+    needs: build-maven-uitest-inji-web-test  # Updated dependency
     strategy:
       matrix:
         include:
