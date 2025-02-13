@@ -18,17 +18,23 @@ import java.util.concurrent.TimeUnit;
 
 
 public class StepDef {
-    String pageTitle;
-    public WebDriver driver;
-    BaseTest baseTest;
+    private  BaseTest baseTest;
     private HomePage homePage;
     private HelpPage helpPage;
     private SetNetwork setNetwork;
+    private WebDriver driver;
+    String pageTitle;
+
     private GlobelConstants globelConstants;
-    public StepDef(BaseTest baseTest) {
-        this.baseTest = baseTest;
-        this.homePage = new HomePage(baseTest.getDriver());
-        this.helpPage = new HelpPage(baseTest.getDriver());
+
+    public StepDef() {
+        this.baseTest =  new BaseTest();
+        this.driver = baseTest.getDriver();
+        if (driver == null) {
+            throw new RuntimeException("WebDriver is null in StepDef! Check if BaseTest initializes correctly.");
+        }
+        this.homePage = new HomePage(driver);
+        this.helpPage = new HelpPage(driver);
         this.setNetwork = new SetNetwork();
     }
 
@@ -280,7 +286,7 @@ public class StepDef {
 
     @Then("User open new tab")
     public void user_open_new_tab() {
-        ((JavascriptExecutor) baseTest.getDriver()).executeScript("window.open('" + baseTest.url + "')");
+//        ((JavascriptExecutor) baseTest.getDriver()).executeScript("window.open('" + baseTest.url + "')");
 
         Set<String> allWindowHandles =baseTest.getDriver().getWindowHandles();
         System.out.println(allWindowHandles);

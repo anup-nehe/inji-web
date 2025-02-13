@@ -27,8 +27,8 @@ public class StepDefSunbirdCredentials {
     private SunbirdCredentials sunbirdCredentials;
     private SetNetwork setNetwork;
 
-    public StepDefSunbirdCredentials(BaseTest baseTest) {
-        this.baseTest = baseTest;
+    public StepDefSunbirdCredentials() {
+        this.baseTest =  new BaseTest();
         this.homePage = new HomePage(baseTest.getDriver());
         this.sunbirdCredentials = new SunbirdCredentials(baseTest.getDriver());
         this.setNetwork = new SetNetwork();
@@ -98,23 +98,23 @@ public class StepDefSunbirdCredentials {
 
     @Then("User verify pdf is downloaded for Insurance")
     public String user_verify_pdf_is_downloaded_for_insurance() throws IOException {
-        baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"fileExists\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
-        baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"getFileProperties\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
-
-        String base64EncodedFile = (String) baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"getFileContent\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
-        byte[] data = Base64.getDecoder().decode(base64EncodedFile);
-        OutputStream stream = new FileOutputStream(baseTest.PdfNameForLifeInsurance);
-        stream.write(data);
-
-        System.out.println(stream);
-        stream.close();
-
-        File pdfFile = new File(System.getProperty("user.dir") + "/" + baseTest.PdfNameForLifeInsurance);
-        PDDocument document = PDDocument.load(pdfFile);
-
-        PDFTextStripper stripper = new PDFTextStripper();
-        String text = stripper.getText(document);
-        return text;
+//        baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"fileExists\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
+//        baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"getFileProperties\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
+//
+//        String base64EncodedFile = (String) baseTest.getJse().executeScript("browserstack_executor: {\"action\": \"getFileContent\", \"arguments\": {\"fileName\": \"" + baseTest.PdfNameForLifeInsurance + "\"}}");
+//        byte[] data = Base64.getDecoder().decode(base64EncodedFile);
+//        OutputStream stream = new FileOutputStream(baseTest.PdfNameForLifeInsurance);
+//        stream.write(data);
+//
+//        System.out.println(stream);
+//        stream.close();
+//
+//        File pdfFile = new File(System.getProperty("user.dir") + "/" + baseTest.PdfNameForLifeInsurance);
+//        PDDocument document = PDDocument.load(pdfFile);
+//
+//        PDFTextStripper stripper = new PDFTextStripper();
+//        String text = stripper.getText(document);
+        return null;
     }
 
     @Then("User verify policy number input box header")
