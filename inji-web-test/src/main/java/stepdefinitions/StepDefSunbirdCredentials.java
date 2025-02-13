@@ -53,7 +53,6 @@ public class StepDefSunbirdCredentials {
     public void user_enter_the_policy_number(String string) throws InterruptedException {
         Thread.sleep(3000);
         sunbirdCredentials.enterPolicyNumer(string);
-
     }
 
     @Then("User enter the full name  {string}")
@@ -147,4 +146,3 @@ public class StepDefSunbirdCredentials {
         Assert.assertTrue(sunbirdCredentials.isEnterFullNameHeaderDisplayed());
     }
 }
-
