@@ -6,6 +6,9 @@
     <groupId>io.mosip.uiautomation.injiweb</groupId>
     <artifactId>inji-web-test</artifactId>
     <version>0.12.0-SNAPSHOT</version>
+    <name>inji-web-test</name>
+    <description>Parent project of ui automation of injiweb</description>
+    <url>https://github.com/mosip/inji-web</url>
 
     <licenses>
         <license>
