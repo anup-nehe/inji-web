@@ -27,7 +27,6 @@ public class StepDefMosipCredentials {
     //    private HomePage homePage;
 //    private HelpPage helpPage;
     private MosipCredentials mosipCredentials;
-    //    private SunbirdCredentials sunbirdCredentials;
     private SetNetwork setNetwork;
 
     public StepDefMosipCredentials() {
