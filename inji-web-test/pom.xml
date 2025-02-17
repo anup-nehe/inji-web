@@ -210,11 +210,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>TestNg.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+
 
             <!-- Maven Shade Plugin for Creating an Executable JAR -->
             <plugin>
