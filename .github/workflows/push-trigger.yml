@@ -124,7 +124,7 @@ jobs:
         include:
           - SERVICE_LOCATION: 'inji-web-test'
             SERVICE_NAME: 'inji-web-test'
-            BUILD_ARTIFACT: 'inji-web-test-local'
+            BUILD_ARTIFACT: 'inji-web-test'
       fail-fast: false
     name: ${{ matrix.SERVICE_NAME }}
     uses: mosip/kattu/.github/workflows/docker-build.yml@master-java21
