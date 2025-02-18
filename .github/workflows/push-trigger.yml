@@ -69,7 +69,7 @@ jobs:
       NAMESPACE: ${{ secrets.dev_namespace_docker_hub }}
       SERVICE_NAME: inji-web-test
       SERVICE_LOCATION: inji-web-test
-      BUILD_ARTIFACT: inji-web-test
+      BUILD_ARTIFACT: inji-web-test-local
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 21
@@ -124,7 +124,7 @@ jobs:
         include:
           - SERVICE_LOCATION: 'inji-web-test'
             SERVICE_NAME: 'inji-web-test'
-            BUILD_ARTIFACT: 'inji-web-test'
+            BUILD_ARTIFACT: 'inji-web-test-local'
       fail-fast: false
     name: ${{ matrix.SERVICE_NAME }}
     uses: mosip/kattu/.github/workflows/docker-build.yml@master-java21
