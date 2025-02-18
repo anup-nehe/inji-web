@@ -38,7 +38,7 @@ USER ${container_user_uid}:${container_user_gid}
 
 # Copy files
 COPY --chown=${container_user_uid}:${container_user} --chmod=771 ./entrypoint.sh ${work_dir}/entrypoint.sh
-COPY --chown=${container_user}:${container_user} ./src/main/resources/ ${work_dir}/resources/
+COPY --chown=${container_user}:${container_user} ./src/test/resources/ ${work_dir}/resources/
 COPY --chown=${container_user_uid}:${container_user} ./target/*.jar ${work_dir}
 
 # Set working directory
