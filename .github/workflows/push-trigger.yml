@@ -99,9 +99,8 @@ jobs:
       - name: Ready the springboot artifacts
         if: ${{ !contains(github.ref, 'master') || !contains(github.ref, 'main') }}
         run: |
-          echo "Creating ZIP file with shaded JAR..."
-          find ${{ env.SERVICE_LOCATION }}/target -name '*-shaded.jar' -type f -exec zip ${{ env.BUILD_ARTIFACT }}.zip {} +
-          ls -lh ${{ env.BUILD_ARTIFACT }}.zip || echo "ZIP file was not created!"
+          ## FIND JARS & COPY ONLY EXECUTABLE JARs STORED UNDER TARGET DIRECTORY 
+          find ${{ env.SERVICE_LOCATION }} -path '*/target/*' -exec zip ${{ env.BUILD_ARTIFACT }}.zip {} +
 
       - name: Upload the springboot jars
         if: ${{ !contains(github.ref, 'master') || !contains(github.ref, 'main') }}
